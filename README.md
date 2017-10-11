@@ -1,2 +1,2 @@
 # VPSA-FRI
-Vzporedni sistemi in algoritmi
+Vzporedni in porazdeljeni sistemi in algoritmi
