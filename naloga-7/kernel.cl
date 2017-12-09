@@ -24,13 +24,11 @@ __kernel void sobel_filter(
 
 	int Gx, Gy;
 	int tempPixel;
-	int y, x;
+	int y = (int)(id / width);
+	int x = (int)(id % width);
 
 	// izracun
 	while (y < height) {
-		y = (int)(id / width);
-		x = (int)(id % width);
-
 		Gx = -getPixelCPU(image, width, height, y-1, x-1)
     		-2*getPixelCPU(image, width, height, y-1, x)
     		-getPixelCPU(image, width, height, y-1, x+1)
@@ -53,5 +51,7 @@ __kernel void sobel_filter(
 			out[id] = tempPixel;
 
 		id += get_global_size(0);
+		y = (int)(id / width);
+		x = (int)(id % width);
 	}
 }
